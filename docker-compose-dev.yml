@@ -50,9 +50,3 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-  nginx:
-    image: 'rallycoding/multi-nginx'
-    mem_limit: 128m
-    hostname: nginx
-    ports:
-      - '80:80'
