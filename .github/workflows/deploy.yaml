@@ -13,7 +13,7 @@ jobs:
       - run: docker build -t omriasu/react-test-up -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true omriasu/react-test-up npm test
 
-      - run: docker build -t omriasu/multi-client-upgrade./client
+      - run: docker build -t omriasu/multi-client-upgrade ./client
       - run: docker build -t omriasu/multi-nginx-upgrade ./nginx
       - run: docker build -t omriasu/multi-server-upgrade ./server
       - run: docker build -t omriasu/multi-worker-upgrade ./worker
