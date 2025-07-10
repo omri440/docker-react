@@ -10,18 +10,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - run: docker build -t omriasu/react-test-up -f ./client/Dockerfile.dev ./client
-      - run: docker run -e CI=true omriasu/react-test-up npm test
+      - run: docker build -t omriasu/react-test-upgrade -f ./client/Dockerfile.dev ./client
+      - run: docker run -e CI=true omriasu/react-test-upgrade npm test
 
-      - run: docker build -t omriasu/multi-client-up ./client
-      - run: docker build -t omriasu/multi-nginx-up ./nginx
-      - run: docker build -t omriasu/multi-server-up ./server
-      - run: docker build -t omriasu/multi-worker-up ./worker
+      - run: docker build -t omriasu/multi-client-upgrade./client
+      - run: docker build -t omriasu/multi-nginx-upgrade ./nginx
+      - run: docker build -t omriasu/multi-server-upgrade ./server
+      - run: docker build -t omriasu/multi-worker-upgrade ./worker
 
-      - run: docker push omriasu/multi-client-up
-      - run: docker push omriasu/multi-nginx-up
-      - run: docker push omriasu/multi-server-up
-      - run: docker push omriasu/multi-worker-up
+      - run: docker push omriasu/multi-client-upgrade
+      - run: docker push omriasu/multi-nginx-upgrade
+      - run: docker push omriasu/multi-server-upgrade
+      - run: docker push omriasu/multi-worker-upgrade
 
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
@@ -31,8 +31,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: multi-docker
-          environment_name: multi-docker-env
+          application_name: multi-docker-upgrade
+          environment_name: Multi-docker-upgrade-env
           existing_bucket_name: elasticbeanstalk-eu-north-1-084375559775
           region: eu-north-1
           version_label: ${{ github.sha }}
