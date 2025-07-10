@@ -1,11 +1,11 @@
 version: '3'
 services:
   client:
-    image: 'omriasu/multi-client'
+    image: 'omriasu/multi-client-upgrade'
     mem_limit: 128m
     hostname: client
   server:
-    image: 'rallomriasuycoding/multi-server'
+    image: 'rallomriasuycoding/multi-server-upgrade'
     mem_limit: 128m
     hostname: api
     environment:
@@ -17,14 +17,14 @@ services:
       - PGPASSWORD=$PGPASSWORD
       - PGPORT=$PGPORT
   worker:
-    image: 'omriasu/multi-worker'
+    image: 'omriasu/multi-worker-upgrade'
     mem_limit: 128m
     hostname: worker
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
   nginx:
-    image: 'omriasu/multi-nginx'
+    image: 'omriasu/multi-nginx-upgrade'
     mem_limit: 128m
     hostname: nginx
     ports:
